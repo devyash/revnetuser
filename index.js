@@ -56,12 +56,12 @@ MongoClient.connect('mongodb://dev:dev@ds143980.mlab.com:43980/revnetapp', (err,
 	 res.render('viewusers.ejs', {users: user})
 	})	
 
-	app.delete('/user/delete/', (req, res) => {
-	 user=db.collection('users').find(req.query.user_id)
-	 db.collection('quotes').findOneAndDelete({_id: req.body.user_id},
+	app.delete('/user/delete', (req, res) => {
+		console.log(req.body.email);
+	 db.collection('users').findOneAndDelete({email: req.body.email},
 	  (err, result) => {
 	    if (err) return res.send(500, err)
-	 res.render('viewusers.ejs', {users: result})
+	  res.send("deleted"+req.body.email);
 	  })
 
 
