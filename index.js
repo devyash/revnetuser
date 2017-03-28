@@ -4,6 +4,10 @@ const MongoClient = require('mongodb').MongoClient
 const app = express()
 app.set('view engine', 'ejs')
 
+// set the port of our application
+// process.env.PORT lets the port be set by Heroku
+var port = process.env.PORT || 8080;
+
 // var path = document.location.pathname;
 // var __dirname = path.substring(path.indexOf('/'), path.lastIndexOf('/'));
 var db
@@ -52,7 +56,7 @@ MongoClient.connect('mongodb://dev:dev@ds143980.mlab.com:43980/revnetapp', (err,
 	 res.render('viewusers.ejs', {users: user})
 	})	
 
-  app.listen(5000, () => {
-    console.log('listening on 3000')
-  })
+  app.listen(port, function() {
+	console.log('Our app is running on http://localhost:' + port);
+});
 })
