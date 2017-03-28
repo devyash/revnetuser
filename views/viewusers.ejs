@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MY APP</title>
+</head>
+<body>
+<h1> Users </h1>
+<ul class="users">
+  <% for(var i=0; i<users.length; i++) {%>
+    <li class="users">
+      <span><p>User Name:</p><%= users[i].name %></span>
+      <span><p>User Address:</p><%= users[i].address %></span>
+      <span><p>User Speciality</p><%= users[i].speciality %></span>
+    </li>
+  <% } %>
+</ul>
+</form>
+</body>
+</html>
+
