@@ -7,7 +7,7 @@
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
-  
+
 </head>
 <body>
 <h1> Users </h1>
@@ -29,7 +29,7 @@
             <td><%=users[i].name%></td>
             <td><%=users[i].address%></td>
             <td><%=users[i].speciality%></td>
-            <td><a class="a-inside delete" href="javascript:void(0)" onClick="deleteUser(<%=users[i].user_id%>)">Delete</a>
+            <td><a class="a-inside delete" href="javascript:void(0)" onClick="deleteUser(<%=users[i]._id.$oid%>)">Delete</a>
                
             </td>
         </tr>

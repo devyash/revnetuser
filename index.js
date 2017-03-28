@@ -58,7 +58,7 @@ MongoClient.connect('mongodb://dev:dev@ds143980.mlab.com:43980/revnetapp', (err,
 
 	app.delete('/user/delete/', (req, res) => {
 	 user=db.collection('users').find(req.query.user_id)
-	 db.collection('quotes').findOneAndDelete({user_id: req.body.user_id},
+	 db.collection('quotes').findOneAndDelete({_id: req.body.user_id},
 	  (err, result) => {
 	    if (err) return res.send(500, err)
 	 res.render('viewusers.ejs', {users: result})
