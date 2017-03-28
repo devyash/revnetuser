@@ -3,19 +3,63 @@
 <head>
   <meta charset="UTF-8">
   <title>MY APP</title>
+          <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  
 </head>
 <body>
 <h1> Users </h1>
 <ul class="users">
-  <% for(var i=0; i<users.length; i++) {%>
-    <li class="users">
-      <span><p>User Name:</p><%= users[i].name %></span>
-      <span><p>User Address:</p><%= users[i].address %></span>
-      <span><p>User Speciality</p><%= users[i].speciality %></span>
-    </li>
-  <% } %>
-</ul>
-</form>
+<div class="users-table">
+    <table border="1" cellpadding="7" cellspacing="7">
+        <tr>
+            <th width="50px">No</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Speciality</th>
+            <th>Delete</th>
+        </tr>
+        
+  		<% for(var i=0; i<users.length; i++) {%>
+         
+        <tr>
+            <td><%=(i+1)%></td>
+            <td><%=users[i].name%></td>
+            <td><%=users[i].address%></td>
+            <td><%=users[i].speciality%></td>
+            <td><a class="a-inside delete" href="javascript:void(0)" onClick="deleteUser(<%=users[i].user_id%>)">Delete</a>
+               
+            </td>
+        </tr>
+        <% } %>
 </body>
+
+<script type="text/javascript">
+	    function deleteUser(user_id){
+    
+        $.ajax({
+            url:"/user/delete",
+            body:JSON.stringify({
+		      'user_id': user_id
+		    }),
+            type: 'DELETE',
+            success: function(res) {
+                
+                window.location.reload();
+                return false;
+            },
+            error:function(xhr, status, error){
+            
+                console.log(xhr.responseText);
+                alert("Error deleting");
+                return false;
+            }
+        });
+    }
+
+</script>
+</script>
 </html>
 
