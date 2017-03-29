@@ -2,13 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>MY APP</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <title>Rev Net App<</title>
 </head>
 <body>
-<h1> Search User</h1>
+
+<div class="container">
+  <div class="jumbotron">
+<h1 align="center"> Search User</h1>
+</div>
 <form action="/user/search" method="POST">
-  <input type="text" placeholder="email	" name="email">
-  <button type="submit">Submit</button>
+  <div class="form-group">
+  <input type="text" placeholder="name" name="name" class="form-control">
+  <br>
+  <button type="button" class="btn btn-primary">Submit</button>
+  </div>
 </form>
+<a href="/"><button type="button" class="btn btn-primary" >Go Back</button></a>
+</div>
 </body>
 </html>

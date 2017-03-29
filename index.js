@@ -52,9 +52,10 @@ MongoClient.connect('mongodb://dev:dev@ds143980.mlab.com:43980/revnetapp', (err,
 	})
 
 	app.post('/user/search', (req, res) => {
-	 user=db.collection('users').find(req.query.name)
-	 res.render('viewusers.ejs', {users: user})
-	})	
+	 user=db.collection('users').find(req.body.name).toArray(function(err, results) {
+	 console.log(user)
+	 res.render('viewusers.ejs', {users: results})
+	})	})
 
 	app.delete('/user/delete', (req, res) => {
 		console.log(req.body.email);
