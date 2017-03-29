@@ -16,7 +16,7 @@
 <h1 align="center"> Users</h1>
 </div>
           
-  <table class="table table-bordered">
+  <table class="table table-bordered table-responsive">
     <thead>
         <tr>
             <th width="50px">No</th>
@@ -50,7 +50,7 @@
         console.log(email);
         console.log("Ajax request sent");
     var req=$.ajax({
-            url:"/user/delete",
+            url:"/users/delete",
             data: {
 		      'email': email,
 		    },

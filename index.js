@@ -36,13 +36,11 @@ MongoClient.connect('mongodb://dev:dev@ds143980.mlab.com:43980/revnetapp', (err,
 	})
 
 	app.get('/users/search', (req, res) => {
-  	db.collection('users').find().toArray(function(err, results) {
-  	// send HTML file populated with quotes here
-  	 res.render('searchusers.ejs', {users: results})
-		})
+  	 res.render('searchusers.ejs')
 	})
 
-	app.post('/user/new', (req, res) => {
+
+	app.post('/users/new', (req, res) => {
 	 db.collection('users').save(req.body, (err, result) => {
 	    if (err) return console.log(err)
 
@@ -51,13 +49,14 @@ MongoClient.connect('mongodb://dev:dev@ds143980.mlab.com:43980/revnetapp', (err,
 	  })
 	})
 
-	app.post('/user/search', (req, res) => {
-	 user=db.collection('users').find(req.body.name).toArray(function(err, results) {
-	 console.log(user)
+	app.post('/users/search', (req, res) => {
+	console.log(req.body.name);
+	 user=db.collection('users').find({"name":req.body.name}).toArray(function(err, results) {
+	 console.log(results)
 	 res.render('viewusers.ejs', {users: results})
 	})	})
 
-	app.delete('/user/delete', (req, res) => {
+	app.delete('/users/delete', (req, res) => {
 		console.log(req.body.email);
 	 db.collection('users').findOneAndDelete({email: req.body.email},
 	  (err, result) => {
